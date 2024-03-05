@@ -9,13 +9,13 @@ export const FONTS = {
   displayBold: {
     fontFamily: 'InknutAntiqua-Bold',
     fontSize: hp('3.448%'),
-    lineHeight: hp('5.0%'),
+    lineHeight: hp('8.0%'),
   },
   // Headers
   h1: {
     fontFamily: 'InknutAntiqua-Regular',
     fontSize: hp('3.448%'),
-    lineHeight: hp('5.0%'),
+    lineHeight: hp('8.0%'),
   },
   h2: {
     fontFamily: 'InknutAntiqua-Medium',
@@ -35,7 +35,23 @@ export const FONTS = {
   h5: {
     fontFamily: 'InknutAntiqua-Bold',
     fontSize: hp('2.216%'),
-    lineHeight: hp('3.325%'),
+    lineHeight: hp('5.325%'),
+  },
+  h6:{
+    fontFamily: 'Istok Web',
+    fontSize: 12, 
+    fontWeight: '700', 
+    lineHeight: 13,
+    letterSpacing: 0.26, 
+    textAlign: 'left', 
+  },
+  h7:{
+    fontFamily: 'IstokWeb-Bold',
+    fontSize: 9,
+    fontWeight: '700',
+    lineHeight: 13,
+    letterSpacing: 0.26,
+    textAlign: 'left',
   },
 
   //  Subheaders
@@ -100,11 +116,56 @@ export const FONTS = {
   },
 
   body9: {
-    fontFamily: 'Kadwa-Regular',
-    fontSize: hp('1.477%'),
-    lineHeight: hp('2.2167%'),
+    fontFamily: 'IstokWeb-Regular',
+    fontSize: hp('1.97%'),
+    lineHeight: hp('2.9556%'),
   },
 
+  body10: {
+    fontFamily: 'IstokWeb-Bold',
+    fontSize: hp('4.448%'),
+    lineHeight: hp('8.0%'),
+  },
+
+  body11: {
+    fontFamily: 'IstokWeb-Bold',
+    fontSize: hp('1.8%'),
+    lineHeight: hp('8.0%'),
+    fontWeight: 700,
+  },
+
+  body12:{
+    fontFamily: 'Kadwa',
+    fontSize: hp('2.448%'),
+    fontWeight: 700,
+    lineHeight: hp('6.0%'),
+  },
+
+  body13:{
+    fontFamily: 'IstokWeb-Bold',
+    fontSize: 12,
+    fontWeight: '700',
+    lineHeight: 13,
+    letterSpacing: 0.26,
+    textAlign: 'left',
+  },
+
+  body14:{
+    fontFamily: 'InknutAntiqua-Regular',
+    fontSize: 7,
+    fontWeight: '400',
+    lineHeight: 15,
+    letterSpacing: 0,
+    textAlign: 'left',
+  },
+  body15:{
+    fontFamily: 'IstokWeb-Regular',
+    fontSize: 8,
+    fontWeight: '400',
+    lineHeight: 9,
+    letterSpacing: 0.23,
+    textAlign: 'left',
+  },
   // Headline
   headline: {
     fontFamily: 'InknutAntiqua-Regular',
@@ -136,6 +197,6 @@ export const FONTS = {
   s5: {
     fontFamily: 'InknutAntiqua-Regular',
     fontSize: hp('0.985%'),
-    lineHeight: hp('1.4778%'),
+    lineHeight: hp('1.6778%'),
   },
 };
