@@ -3,6 +3,7 @@ import {Dimensions, StyleSheet, Text, View} from 'react-native';
 import {connect} from 'react-redux';
 import {RootState} from '../../../app-redux-store/store';
 import {AppColors} from '../../../utils/theme/app.colors';
+import LinearGradient from 'react-native-linear-gradient';
 
 let ScreenHeight = Dimensions.get('window').height;
 
@@ -13,8 +14,12 @@ let ScreenHeight = Dimensions.get('window').height;
  */
 export const WelcomeScreen = () => {
   return (
-    <View style={style.container}>
-      <Text>Nash</Text>
+    <View>
+      <LinearGradient
+        colors={[AppColors.darkblue, AppColors.turquoise]}
+        style={style.container}>
+        <Text>Welcome</Text>
+      </LinearGradient>
     </View>
   );
 };
@@ -32,7 +37,6 @@ const style = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-around',
-    backgroundColor: AppColors.light_blue,
     height: ScreenHeight,
   },
   animation: {
