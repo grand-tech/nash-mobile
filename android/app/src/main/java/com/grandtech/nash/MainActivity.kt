@@ -1,4 +1,4 @@
-package com.nash
+package com.grandtech.nash
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

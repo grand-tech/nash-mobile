@@ -1,4 +1,4 @@
-package com.nash
+package com.grandtech.nash
 
 import android.app.Application
 import com.facebook.react.PackageList
