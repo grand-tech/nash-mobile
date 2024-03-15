@@ -1,0 +1,39 @@
+{
+    "project_info": {
+        "project_number": "1073559611016",
+        "project_id": "nash-dev",
+        "storage_bucket": "nash-dev.appspot.com"
+    },
+    "client": [
+        {
+            "client_info": {
+                "mobilesdk_app_id": "1:1073559611016:android:bfddfef1eff6d69ee8a13d",
+                "android_client_info": {
+                    "package_name": "com.grandtech.nash"
+                }
+            },
+            "oauth_client": [
+                {
+                    "client_id": "1073559611016-ivbosne0e8okjrnstg564cafpjrrobfp.apps.googleusercontent.com",
+                    "client_type": 3
+                }
+            ],
+            "api_key": [
+                {
+                    "current_key": "AIzaSyChjoKKSES8ci3vjJIp0opdZLobsNqo2Uk"
+                }
+            ],
+            "services": {
+                "appinvite_service": {
+                    "other_platform_oauth_client": [
+                        {
+                            "client_id": "1073559611016-ivbosne0e8okjrnstg564cafpjrrobfp.apps.googleusercontent.com",
+                            "client_type": 3
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "configuration_version": "1"
+}
