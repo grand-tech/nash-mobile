@@ -4,98 +4,62 @@
  *
  * @format
  */
-
+import analytics from '@react-native-firebase/analytics';
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {RootState} from './src/redux-store/store';
+import {ConnectedProps, connect} from 'react-redux';
+import {NavigationContainer} from '@react-navigation/native';
+import {navigationRef} from './src/navigation/navigation.service';
+import {OnboardingNavigationStack} from './src/features/onboarding/navigation/onboarding.navigation.stack';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import {Counter} from './src/features/counter/Counter';
+const App: React.FC<Props> = (props: Props) => {
+  const routeNameRef = React.useRef<String>();
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+  /**
+   * On navigation container ready.
+   */
+  const onNavContainerReady = () => {
+    routeNameRef.current = routeNameRef.current =
+      typeof navigationRef?.current?.getCurrentRoute()?.name === 'undefined'
+        ? ''
+        : navigationRef?.current?.getCurrentRoute()?.name;
+  };
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+  /**
+   * On navigation container state change.
+   */
+  const onNavContainerStateChange = async () => {
+    const previousRouteName = routeNameRef.current;
+    const currentRouteName = navigationRef?.current?.getCurrentRoute()?.name;
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    if (previousRouteName !== currentRouteName) {
+      await analytics().logScreenView({
+        screen_name: currentRouteName,
+        screen_class: currentRouteName,
+      });
+    }
+    routeNameRef.current =
+      typeof currentRouteName === 'undefined' ? '' : currentRouteName;
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <Counter></Counter>
-      </ScrollView>
-    </SafeAreaView>
+    <NavigationContainer
+      ref={navigationRef}
+      onReady={onNavContainerReady}
+      onStateChange={onNavContainerStateChange}>
+      <OnboardingNavigationStack />
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+const mapStateToProps = (state: RootState) => ({});
 
-export default App;
+const mapDispatchToProps = {};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+type ReduxProps = ConnectedProps<typeof connector>;
+
+interface Props extends ReduxProps {}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

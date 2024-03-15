@@ -2,7 +2,7 @@ import {NativeStackNavigationOptions} from '@react-navigation/native-stack';
 import React from 'react';
 import {BackButton, DeleteButton} from '../../../navigation/navigation.utils';
 import {OnboardingRootStack} from './onboarding.navigation.stack';
-import {WelcomeScreen} from './welcome.screen';
+import WelcomeScreen from './welcome.screen';
 
 /**
  * Hides the header.
