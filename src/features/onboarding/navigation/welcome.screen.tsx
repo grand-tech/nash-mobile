@@ -14,7 +14,7 @@ import {NashButton} from '../../../components/DefaultButton';
 import {FONTS} from '../../../utils/theme/fonts';
 
 /**
- *
+ * Welcome screen.
  * @returns Component to be displayed when redux persist
  *  is rehydrating redux storage.
  */
@@ -42,12 +42,15 @@ const WelcomeScreen: React.FC<Props> = (props: Props) => {
 
   return (
     <Screen style={style.container}>
-      <View>
-        <LinearGradient
-          colors={[AppColors.turquoise, AppColors.darkblue]}
-          style={style.container}>
+      <LinearGradient
+        colors={[AppColors.turquoise, AppColors.darkblue]}
+        style={style.container}>
+        {/* The logo container */}
+        <View style={style.logo_container}>
           <Image source={whiteLogo} style={style.whiteLogo} />
+        </View>
 
+        <View style={style.body_container}>
           <View>
             <Text style={style.screen_header}>Welcome</Text>
 
@@ -76,8 +79,8 @@ const WelcomeScreen: React.FC<Props> = (props: Props) => {
             buttonStyle={style.terms_and_conditions_btn}
             titleStyle={style.terms_and_conditions_text}
           />
-        </LinearGradient>
-      </View>
+        </View>
+      </LinearGradient>
     </Screen>
   );
 };
@@ -120,16 +123,18 @@ const style = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 20,
     borderRadius: 10,
-    width: widthPercentageToDP('50%'),
+    width: widthPercentageToDP('65%'),
   },
   register_btn: {
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,
-    width: widthPercentageToDP('50%'),
+    paddingVertical: 8,
+    paddingHorizontal: 20,
+    width: widthPercentageToDP('65%'),
     borderWidth: 1,
     borderColor: AppColors.white,
-    backgroundColor: 'transparent',
+    backgroundColor: AppColors.darkblue,
   },
   register_txt: {
     ...FONTS.h4,
@@ -141,5 +146,18 @@ const style = StyleSheet.create({
   },
   screen_text: {
     ...FONTS.h4,
+  },
+  logo_container: {
+    flex: 0.5,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    width: widthPercentageToDP('100%'),
+  },
+  body_container: {
+    flex: 0.5,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    width: widthPercentageToDP('100%'),
+    paddingBottom: heightPercentageToDP('8%'),
   },
 });
