@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import {ConnectedProps, connect} from 'react-redux';
 import {AppColors} from '../../../utils/theme/app.colors';
 import LinearGradient from 'react-native-linear-gradient';
@@ -34,7 +34,7 @@ const WelcomeScreen: React.FC<Props> = (props: Props) => {
   };
 
   /**
-   * Registeron press handler.
+   * Register on press handler.
    */
   const register = () => {
     console.log('Register');
@@ -66,8 +66,8 @@ const WelcomeScreen: React.FC<Props> = (props: Props) => {
           <NashButton
             title="Register"
             onPress={register}
-            buttonStyle={style.login_btn}
-            titleStyle={style.login_txt}
+            buttonStyle={style.register_btn}
+            titleStyle={style.register_txt}
           />
 
           <NashButton
@@ -120,8 +120,20 @@ const style = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 20,
     borderRadius: 10,
-    elevation: 3,
     width: widthPercentageToDP('50%'),
+  },
+  register_btn: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
+    width: widthPercentageToDP('50%'),
+    borderWidth: 1,
+    borderColor: AppColors.white,
+    backgroundColor: 'transparent',
+  },
+  register_txt: {
+    ...FONTS.h4,
+    color: AppColors.white,
   },
   login_txt: {},
   screen_header: {
