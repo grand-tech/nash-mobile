@@ -19,8 +19,25 @@ import {FONTS} from '../../../utils/theme/fonts';
  *  is rehydrating redux storage.
  */
 const WelcomeScreen: React.FC<Props> = (props: Props) => {
+  /**
+   * Navigate to terms and conditions.
+   */
   const navigateToTermsAndConditions = () => {
     console.log('Terms and conditions');
+  };
+
+  /**
+   * Log in on press handler.
+   */
+  const login = () => {
+    console.log('Log in');
+  };
+
+  /**
+   * Registeron press handler.
+   */
+  const register = () => {
+    console.log('Register');
   };
 
   return (
@@ -32,18 +49,30 @@ const WelcomeScreen: React.FC<Props> = (props: Props) => {
           <Image source={whiteLogo} style={style.whiteLogo} />
 
           <View>
-            <Text>Welcome</Text>
+            <Text style={style.screen_header}>Welcome</Text>
 
-            <Text>Easily Access your money from anywhere, at any time!</Text>
+            <Text style={style.screen_text}>
+              Easily Access your money from anywhere, at any time!
+            </Text>
           </View>
 
-          <Button title="Register" />
+          <NashButton
+            title="Login"
+            onPress={login}
+            buttonStyle={style.login_btn}
+            titleStyle={style.login_txt}
+          />
 
-          <Button title="Login" />
+          <NashButton
+            title="Register"
+            onPress={register}
+            buttonStyle={style.login_btn}
+            titleStyle={style.login_txt}
+          />
 
           <NashButton
             title="Terms of Services"
-            onPress={undefined}
+            onPress={navigateToTermsAndConditions}
             buttonStyle={style.terms_and_conditions_btn}
             titleStyle={style.terms_and_conditions_text}
           />
@@ -84,5 +113,21 @@ const style = StyleSheet.create({
   terms_and_conditions_text: {
     color: AppColors.sky_blue,
     ...FONTS.body2,
+  },
+  login_btn: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 8,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+    elevation: 3,
+    width: widthPercentageToDP('50%'),
+  },
+  login_txt: {},
+  screen_header: {
+    ...FONTS.h1,
+  },
+  screen_text: {
+    ...FONTS.h4,
   },
 });
