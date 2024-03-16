@@ -3,4 +3,5 @@
  */
 export type OnboardingNavigationStackParamsList = {
   WelcomeScreen: undefined;
+  RegisterScreen: undefined;
 };

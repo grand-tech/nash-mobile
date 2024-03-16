@@ -12,6 +12,8 @@ import Screen from '../../../components/screen';
 import {whiteLogo} from '../../../utils/images';
 import {NashButton} from '../../../components/DefaultButton';
 import {FONTS} from '../../../utils/theme/fonts';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {OnboardingNavigationStackParamsList} from '../navigation/navigation.params.type';
 
 /**
  * Welcome screen.
@@ -37,7 +39,7 @@ const WelcomeScreen: React.FC<Props> = (props: Props) => {
    * Register on press handler.
    */
   const register = () => {
-    console.log('Register');
+    props.navigation.navigate('RegisterScreen');
   };
 
   return (
@@ -85,6 +87,11 @@ const WelcomeScreen: React.FC<Props> = (props: Props) => {
   );
 };
 
+type StackProps = NativeStackScreenProps<
+  OnboardingNavigationStackParamsList,
+  'WelcomeScreen'
+>;
+
 const mapStateToProps = (state: RootState) => ({});
 
 const mapDispatchToProps = {};
@@ -93,7 +100,7 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type ReduxProps = ConnectedProps<typeof connector>;
 
-interface Props extends ReduxProps {}
+type Props = ReduxProps & StackProps;
 
 export default connect(mapStateToProps, mapDispatchToProps)(WelcomeScreen);
 
