@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import {ConnectedProps, connect} from 'react-redux';
 import {RootState} from '../../../redux-store/store';
 import {
@@ -14,13 +14,14 @@ import {TextInput} from 'react-native-gesture-handler';
 import {AppColors} from '../../../utils/theme/app.colors';
 import {FONTS} from '../../../utils/theme/fonts';
 import {useFocusEffect} from '@react-navigation/native';
+import {lightBlueLogo} from '../../../utils/images';
 
 /**
- * Register screen.
+ * Login screen.
  * @returns Component to be displayed when redux persist
  *  is rehydrating redux storage.
  */
-const RegisterScreen: React.FC<Props> = (props: Props) => {
+const LoginScreen: React.FC<Props> = (props: Props) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -42,70 +43,59 @@ const RegisterScreen: React.FC<Props> = (props: Props) => {
    * Log in on press handler.
    */
   const login = () => {
-    props.navigation.navigate('LoginScreen');
+    console.log('Log in');
   };
 
   /**
    * Register on press handler.
    */
   const register = () => {
-    console.log('Register');
+    props.navigation.navigate('RegisterScreen');
   };
 
   return (
     <Screen style={style.container}>
-      <View style={style.screenContent}>
-        <View style={style.headerContainer}>
-          <Text style={style.screenTittle}>Hello,</Text>
-          <Text style={style.screenSubtitle}>Register to continue...</Text>
-        </View>
+      <Image source={lightBlueLogo} style={style.whiteLogo} />
 
-        <TextInput
-          style={style.input}
-          value={phoneNumber}
-          placeholder="Phone Number"
-          onChangeText={setPhoneNumber}
-          placeholderTextColor={AppColors.darkblue}
-        />
+      <Text style={style.screenTittle}>Welcome Back,</Text>
 
-        <TextInput
-          style={style.input}
-          value={password}
-          placeholder="Password"
-          onChangeText={setPassword}
-          placeholderTextColor={AppColors.darkblue}
-        />
+      <TextInput
+        style={style.input}
+        value={phoneNumber}
+        placeholder="Phone Number"
+        onChangeText={setPhoneNumber}
+        placeholderTextColor={AppColors.darkblue}
+      />
 
-        <TextInput
-          style={style.input}
-          value={confirmPassword}
-          placeholder="Confirm Password"
-          onChangeText={setConfirmPassword}
-          placeholderTextColor={AppColors.darkblue}
-        />
+      <TextInput
+        style={style.input}
+        value={password}
+        placeholder="Password"
+        onChangeText={setPassword}
+        placeholderTextColor={AppColors.darkblue}
+      />
 
-        <NashButton
-          title="Register"
-          onPress={register}
-          buttonStyle={style.registerBtnStyle}
-          titleStyle={style.registerBtnTextStyle}
-        />
-        <Text style={style.loginText}>
-          Already have an account?
-          <Text style={style.loginButtonStyle} onPress={login}>
-            {' '}
-            Log in
-          </Text>
-          .
+      <NashButton
+        title="Login"
+        onPress={login}
+        buttonStyle={style.LoginBtnStyle}
+        titleStyle={style.LoginBtnTextStyle}
+      />
+      <Text style={style.registerText}>
+        Don`t have an account?
+        <Text style={style.registerButtonStyle} onPress={register}>
+          {' '}
+          Register
         </Text>
-      </View>
+        .
+      </Text>
     </Screen>
   );
 };
 
 type StackProps = NativeStackScreenProps<
   OnboardingNavigationStackParamsList,
-  'RegisterScreen'
+  'LoginScreen'
 >;
 
 const mapStateToProps = (state: RootState) => ({});
@@ -118,7 +108,7 @@ type ReduxProps = ConnectedProps<typeof connector>;
 
 type Props = ReduxProps & StackProps;
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
 
 const style = StyleSheet.create({
   container: {
@@ -128,8 +118,9 @@ const style = StyleSheet.create({
     height: heightPercentageToDP('100%'),
     width: widthPercentageToDP('100%'),
   },
-  headerContainer: {
-    width: widthPercentageToDP('70%'),
+  whiteLogo: {
+    width: widthPercentageToDP('26%'),
+    height: heightPercentageToDP('17%'),
   },
   screenSubtitle: {
     ...FONTS.sh2,
@@ -152,18 +143,18 @@ const style = StyleSheet.create({
   screenBody: {
     color: AppColors.darkblue,
   },
-  loginText: {
+  registerText: {
     color: AppColors.darkblue,
   },
-  loginButtonStyle: {
+  registerButtonStyle: {
     color: AppColors.light_blue,
   },
-  registerBtnStyle: {
+  LoginBtnStyle: {
     backgroundColor: AppColors.darkblue,
     borderRadius: 10,
     width: widthPercentageToDP('50%'),
   },
-  registerBtnTextStyle: {
+  LoginBtnTextStyle: {
     color: AppColors.white,
   },
   screenContent: {
