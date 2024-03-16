@@ -13,6 +13,7 @@ import {NashButton} from '../../../components/DefaultButton';
 import {TextInput} from 'react-native-gesture-handler';
 import {AppColors} from '../../../utils/theme/app.colors';
 import {FONTS} from '../../../utils/theme/fonts';
+import {useFocusEffect} from '@react-navigation/native';
 
 /**
  * Register screen.
@@ -23,6 +24,19 @@ const RegisterScreen: React.FC<Props> = (props: Props) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
+  useFocusEffect(() => {
+    props.navigation.setOptions({
+      title: '',
+      headerShown: true,
+      headerTransparent: true,
+    });
+    return () => {
+      props.navigation.setOptions({
+        title: '',
+      });
+    };
+  });
 
   /**
    * Log in on press handler.
