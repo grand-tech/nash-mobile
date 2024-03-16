@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import {ConnectedProps, connect} from 'react-redux';
 import {AppColors} from '../../../utils/theme/app.colors';
 import LinearGradient from 'react-native-linear-gradient';
@@ -12,9 +12,11 @@ import Screen from '../../../components/screen';
 import {whiteLogo} from '../../../utils/images';
 import {NashButton} from '../../../components/DefaultButton';
 import {FONTS} from '../../../utils/theme/fonts';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {OnboardingNavigationStackParamsList} from '../navigation/navigation.params.type';
 
 /**
- *
+ * Welcome screen.
  * @returns Component to be displayed when redux persist
  *  is rehydrating redux storage.
  */
@@ -34,20 +36,23 @@ const WelcomeScreen: React.FC<Props> = (props: Props) => {
   };
 
   /**
-   * Registeron press handler.
+   * Register on press handler.
    */
   const register = () => {
-    console.log('Register');
+    props.navigation.navigate('RegisterScreen');
   };
 
   return (
     <Screen style={style.container}>
-      <View>
-        <LinearGradient
-          colors={[AppColors.turquoise, AppColors.darkblue]}
-          style={style.container}>
+      <LinearGradient
+        colors={[AppColors.turquoise, AppColors.darkblue]}
+        style={style.container}>
+        {/* The logo container */}
+        <View style={style.logo_container}>
           <Image source={whiteLogo} style={style.whiteLogo} />
+        </View>
 
+        <View style={style.body_container}>
           <View>
             <Text style={style.screen_header}>Welcome</Text>
 
@@ -66,8 +71,8 @@ const WelcomeScreen: React.FC<Props> = (props: Props) => {
           <NashButton
             title="Register"
             onPress={register}
-            buttonStyle={style.login_btn}
-            titleStyle={style.login_txt}
+            buttonStyle={style.register_btn}
+            titleStyle={style.register_txt}
           />
 
           <NashButton
@@ -76,11 +81,16 @@ const WelcomeScreen: React.FC<Props> = (props: Props) => {
             buttonStyle={style.terms_and_conditions_btn}
             titleStyle={style.terms_and_conditions_text}
           />
-        </LinearGradient>
-      </View>
+        </View>
+      </LinearGradient>
     </Screen>
   );
 };
+
+type StackProps = NativeStackScreenProps<
+  OnboardingNavigationStackParamsList,
+  'WelcomeScreen'
+>;
 
 const mapStateToProps = (state: RootState) => ({});
 
@@ -90,7 +100,7 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type ReduxProps = ConnectedProps<typeof connector>;
 
-interface Props extends ReduxProps {}
+type Props = ReduxProps & StackProps;
 
 export default connect(mapStateToProps, mapDispatchToProps)(WelcomeScreen);
 
@@ -120,8 +130,22 @@ const style = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 20,
     borderRadius: 10,
-    elevation: 3,
-    width: widthPercentageToDP('50%'),
+    width: widthPercentageToDP('65%'),
+  },
+  register_btn: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
+    paddingVertical: 8,
+    paddingHorizontal: 20,
+    width: widthPercentageToDP('65%'),
+    borderWidth: 1,
+    borderColor: AppColors.white,
+    backgroundColor: AppColors.darkblue,
+  },
+  register_txt: {
+    ...FONTS.h4,
+    color: AppColors.white,
   },
   login_txt: {},
   screen_header: {
@@ -129,5 +153,18 @@ const style = StyleSheet.create({
   },
   screen_text: {
     ...FONTS.h4,
+  },
+  logo_container: {
+    flex: 0.5,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    width: widthPercentageToDP('100%'),
+  },
+  body_container: {
+    flex: 0.5,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    width: widthPercentageToDP('100%'),
+    paddingBottom: heightPercentageToDP('8%'),
   },
 });

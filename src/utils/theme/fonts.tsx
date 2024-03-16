@@ -37,15 +37,15 @@ export const FONTS = {
     fontSize: hp('2.216%'),
     lineHeight: hp('5.325%'),
   },
-  h6:{
+  h6: {
     fontFamily: 'Istok Web',
-    fontSize: 12, 
-    fontWeight: '700', 
+    fontSize: 12,
+    fontWeight: '700',
     lineHeight: 13,
-    letterSpacing: 0.26, 
-    textAlign: 'left', 
+    letterSpacing: 0.26,
+    textAlign: 'left',
   },
-  h7:{
+  h7: {
     fontFamily: 'IstokWeb-Bold',
     fontSize: 9,
     fontWeight: '700',
@@ -64,7 +64,7 @@ export const FONTS = {
   sh2: {
     fontFamily: 'InknutAntiqua-Medium',
     fontSize: hp('2.463%'),
-    lineHeight: hp('3.694%'),
+    lineHeight: hp('4.694%'),
   },
 
   // Body
@@ -134,14 +134,14 @@ export const FONTS = {
     fontWeight: 700,
   },
 
-  body12:{
+  body12: {
     fontFamily: 'Kadwa',
     fontSize: hp('2.448%'),
     fontWeight: 700,
     lineHeight: hp('6.0%'),
   },
 
-  body13:{
+  body13: {
     fontFamily: 'IstokWeb-Bold',
     fontSize: 12,
     fontWeight: '700',
@@ -150,7 +150,7 @@ export const FONTS = {
     textAlign: 'left',
   },
 
-  body14:{
+  body14: {
     fontFamily: 'InknutAntiqua-Regular',
     fontSize: 7,
     fontWeight: '400',
@@ -158,7 +158,7 @@ export const FONTS = {
     letterSpacing: 0,
     textAlign: 'left',
   },
-  body15:{
+  body15: {
     fontFamily: 'IstokWeb-Regular',
     fontSize: 8,
     fontWeight: '400',

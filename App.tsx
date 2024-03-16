@@ -11,6 +11,7 @@ import {ConnectedProps, connect} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
 import {navigationRef} from './src/navigation/navigation.service';
 import {OnboardingNavigationStack} from './src/features/onboarding/navigation/onboarding.navigation.stack';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 const App: React.FC<Props> = (props: Props) => {
   const routeNameRef = React.useRef<String>();
@@ -43,12 +44,14 @@ const App: React.FC<Props> = (props: Props) => {
   };
 
   return (
-    <NavigationContainer
-      ref={navigationRef}
-      onReady={onNavContainerReady}
-      onStateChange={onNavContainerStateChange}>
-      <OnboardingNavigationStack />
-    </NavigationContainer>
+    <GestureHandlerRootView style={{flex: 1}}>
+      <NavigationContainer
+        ref={navigationRef}
+        onReady={onNavContainerReady}
+        onStateChange={onNavContainerStateChange}>
+        <OnboardingNavigationStack />
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 };
 

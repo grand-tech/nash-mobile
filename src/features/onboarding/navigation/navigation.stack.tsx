@@ -2,7 +2,9 @@ import {NativeStackNavigationOptions} from '@react-navigation/native-stack';
 import React from 'react';
 import {BackButton, DeleteButton} from '../../../navigation/navigation.utils';
 import {OnboardingRootStack} from './onboarding.navigation.stack';
-import WelcomeScreen from './welcome.screen';
+import WelcomeScreen from '../screens/welcome.screen';
+import RegisterScreen from '../screens/register.screen';
+import LoginScreen from '../screens/login.screen';
 
 /**
  * Hides the header.
@@ -55,6 +57,18 @@ export const onboardingNavigationStack = (
     <OnboardingRootStack.Screen
       name="WelcomeScreen"
       component={WelcomeScreen}
+      options={RootStackScreenHideHeader}
+    />
+
+    <OnboardingRootStack.Screen
+      name="RegisterScreen"
+      component={RegisterScreen}
+      options={RootStackScreenHideHeader}
+    />
+
+    <OnboardingRootStack.Screen
+      name="LoginScreen"
+      component={LoginScreen}
       options={RootStackScreenHideHeader}
     />
 
